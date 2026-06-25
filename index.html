@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swedish Gym - Salle de Fitness Premium à Tunis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #007AFF;
+            --secondary: #F0E68C;
+            --accent: #FF6B35;
+            --dark-bg: #0F1419;
+            --dark-card: #1a1f2e;
+            --text-light: #ffffff;
+            --text-gray: #b0b0b0;
+            --text-muted: #808080;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==================== SCROLLBAR ==================== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+
+        /* ==================== NAVBAR ==================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 122, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+.logo-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.35) contrast(1.1);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 20, 25, 0.6), rgba(0, 122, 255, 0.08));
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-label {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            animation: slideUp 0.8s ease forwards;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: slideUp 0.8s ease 0.1s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            animation: slideUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 1.1rem 2.8rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 122, 255, 0.5);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: rgba(0, 122, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ==================== SCROLL INDICATOR ==================== */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 50px;
+            stroke: var(--primary);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        /* ==================== CONTAINER & SECTIONS ==================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title h2 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about {
+            background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.03));
+            border-top: 1px solid rgba(0, 122, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 122, 255, 0.1);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            color: var(--text-gray);
+            margin-bottom: 1.8rem;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(0, 122, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(0, 122, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .features-list {
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* ==================== FACILITIES SECTION ==================== */
+        .facilities {
+            background: var(--dark-bg);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .facility-card {
+            background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.05));
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 122, 255, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .facility-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.15), transparent);
+            transition: all 0.3s ease;
+        }
+
+        .facility-card:hover::before {
+            top: -20%;
+            right: -20%;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 122, 255, 0.2);
+        }
+
+        .facility-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .facility-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+
+        .facility-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+
+        /* ==================== CLASSES SECTION ==================== */
+        .classes {
+            background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.02));
+            border-top: 1px solid rgba(0, 122, 255, 0.1);
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .class-card {
+            background: rgba(0, 122, 255, 0.05);
+            border: 2px solid rgba(0, 122, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .class-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 122, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .class-card:hover::before {
+            left: 100%;
+        }
+
+        .class-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 35px rgba(0, 122, 255, 0.25);
+        }
+
+        .class-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .class-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ==================== PRICING SECTION ==================== */
+        .pricing {
+            background: var(--dark-bg);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.05));
+            padding: 3rem;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 122, 255, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 122, 255, 0.3);
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .pricing-duration {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .pricing-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .pricing-currency {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        .pricing-period {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            padding: 0.9rem 0;
+            color: var(--text-gray);
+            border-bottom: 1px solid rgba(0, 122, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+        }
+
+        /* ==================== COACHES SECTION ==================== */
+        .coaches {
+            background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.03));
+            border-top: 1px solid rgba(0, 122, 255, 0.1);
+        }
+
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .coach-card {
+            background: var(--dark-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(0, 122, 255, 0.15);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .coach-image {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        .coach-image svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .coach-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.2), rgba(255, 107, 53, 0.2));
+        }
+
+        .coach-card:hover .coach-image::after {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.3), rgba(255, 107, 53, 0.3));
+        }
+
+        .coach-info {
+            padding: 2.5rem;
+        }
+
+        .coach-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .coach-role {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .coach-bio {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .coach-badge {
+            display: inline-block;
+            background: rgba(0, 122, 255, 0.15);
+            color: var(--primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .btn-light:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .contact {
+            background: var(--dark-bg);
+        }
+
+        .contact-content {
+            display: block;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .contact-item {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-label {
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .contact-value {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .contact-value a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--primary);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.05));
+            border-top: 1px solid rgba(0, 122, 255, 0.1);
+            padding: 3.5rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .footer-social {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(0, 122, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .footer-social:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section {
+                padding: 4rem 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                margin-top: 50px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1rem 1rem;
+            }
+
+            .logo-text {
+                display: none;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <img src="vd/gym-logo.jpeg" alt="Swedish Gym Logo" style="height: 45px; width: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);">
+            <span class="logo-text">SWEDISH GYM</span>
+        </a>
+        <ul>
+            <li><a href="#about" class="nav-link active">À Propos</a></li>
+            <li><a href="#facilities" class="nav-link">Équipements</a></li>
+            <li><a href="#classes" class="nav-link">Cours</a></li>
+            <li><a href="#pricing" class="nav-link">Tarifs</a></li>
+            <li><a href="#coaches" class="nav-link">Coachs</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="joinBtn">Essai Gratuit</button>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="hero">
+        <video autoplay muted loop playsinline>
+            <source src="vd/gym-video-5.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la balise vidéo.
+        </video>
+
+        <div class="hero-content">
+            <div class="hero-label">Transformez Votre Corps, Transformez Votre Vie</div>
+            <h1>
+                Devenez <span>Invincible</span>
+            </h1>
+            <p>Rejoignez Swedish Gym et découvrez votre vrai potentiel avec nos programmes d'entraînement élite et nos coachs professionnels certifiés.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="joinBtn2">Essai Gratuit</button>
+                <a href="#about" class="btn btn-secondary">Découvrir</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Pourquoi Choisir Swedish Gym?</h3>
+                    <p>Chez Swedish Gym, nous croyons en autonomisation de nos membres pour obtenir des résultats extraordinaires. Avec un équipement haut de gamme, des coachs experts certifiés, et une communauté bienveillante, nous créons l'environnement parfait pour votre transformation physique.</p>
+                    <p>Que vous soyez débutant ou athlète confirmé, nos programmes complets sont conçus pour vous rencontrer où vous êtes et vous pousser vers où vous voulez être.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Équipement haut de gamme et moderne</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Coachs professionnels et certifiés</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Douches et vestiaires de qualité</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Ambiance familiale et motivante</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Environnement confortable pour tous</span>
+                        </div>
+                    </div>
+
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Membres Actifs</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Coachs Experts</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 12px; padding: 3rem; display: flex; align-items: center; justify-content: center; height: 100%; min-height: 400px; overflow: hidden;">
+                    <img src="vd/swedish-pic.jpg" alt="Swedish Gym" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FACILITIES SECTION ==================== -->
+    <section class="facilities section" id="facilities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos <span>Équipements</span></h2>
+                <p>Un environnement professionnel et motivant pour votre transformation</p>
+            </div>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-icon">🏋️</div>
+                    <h3>Équipement Haut de Gamme</h3>
+                    <p>Accès à du matériel professionnel dernier cri pour tous les types d'entraînement et tous les niveaux.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">👥</div>
+                    <h3>Coachs Certifiés</h3>
+                    <p>Nos deux coachs professionnels sont là pour vous guider, vous motiver et adapter chaque séance à vos objectifs.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🚿</div>
+                    <h3>Douches & Vestiaires</h3>
+                    <p>Douches et vestiaires de qualité pour votre confort avant et après votre entraînement.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">❤️</div>
+                    <h3>Ambiance Motivante</h3>
+                    <p>Une communauté bienveillante et motivante où chacun s'entraide pour atteindre ses objectifs.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🎯</div>
+                    <h3>Pour Tous les Niveaux</h3>
+                    <p>Du débutant à l'athlète confirmé, Swedish Gym s'adapte à votre niveau et vos ambitions.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">✨</div>
+                    <h3>Confort & Bien-être</h3>
+                    <p>Un environnement confortable où tout le monde se sent à l'aise et bienvenu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CLASSES SECTION ==================== -->
+    <section class="classes section" id="classes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos <span>Cours</span></h2>
+                <p>Une variété de classes pour tous les goûts et tous les objectifs</p>
+            </div>
+            <div class="classes-grid">
+                <div class="class-card">
+                    <span class="class-emoji">⚡</span>
+                    <h3>HIIT</h3>
+                </div>
+                <div class="class-card">
+                    <span class="class-emoji">💥</span>
+                    <h3>Fit Pump</h3>
+                </div>
+                <div class="class-card">
+                    <span class="class-emoji">🧘</span>
+                    <h3>Pilates</h3>
+                </div>
+                <div class="class-card">
+                    <span class="class-emoji">🏃</span>
+                    <h3>Cardio Circuit</h3>
+                </div>
+                <div class="class-card">
+                    <span class="class-emoji">🏋️</span>
+                    <h3>CrossFit</h3>
+                </div>
+                <div class="class-card">
+                    <span class="class-emoji">🥊</span>
+                    <h3>Boxe</h3>
+                </div>
+                <div class="class-card">
+                    <span class="class-emoji">💃</span>
+                    <h3>Dance</h3>
+                </div>
+                <div class="class-card">
+                    <span class="class-emoji">🎯</span>
+                    <h3>Tae Bo</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PRICING SECTION ==================== -->
+    <section class="pricing section" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos <span>Tarifs</span></h2>
+                <p>Des formules flexibles pour tous les budgets</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-duration">3 Mois</div>
+                    <div class="pricing-price"><span class="pricing-currency">210</span> DT</div>
+                    <div class="pricing-period">Accès illimité à la salle</div>
+                    <ul class="pricing-features">
+                        <li>Accès illimité aux équipements</li>
+                        <li>Accès à tous les cours</li>
+                        <li>Support des coachs</li>
+                        <li>Douches & vestiaires</li>
+                    </ul>
+                    <button class="btn btn-primary">Rejoindre</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">MEILLEUR PRIX</div>
+                    <div class="pricing-duration">6 Mois</div>
+                    <div class="pricing-price"><span class="pricing-currency">330</span> DT</div>
+                    <div class="pricing-period">Formule recommandée</div>
+                    <ul class="pricing-features">
+                        <li>Accès illimité aux équipements</li>
+                        <li>Accès à tous les cours</li>
+                        <li>8 séances de coaching</li>
+                        <li>Suivi personnalisé</li>
+                        <li>Douches & vestiaires</li>
+                    </ul>
+                    <button class="btn btn-primary">Rejoindre</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-duration">1 An</div>
+                    <div class="pricing-price"><span class="pricing-currency">540</span> DT</div>
+                    <div class="pricing-period">Meilleure économie</div>
+                    <ul class="pricing-features">
+                        <li>Accès illimité aux équipements</li>
+                        <li>Accès illimité aux cours</li>
+                        <li>Coaching illimité</li>
+                        <li>Suivi personnalisé complet</li>
+                        <li>Priorité d'accès</li>
+                        <li>Douches & vestiaires</li>
+                    </ul>
+                    <button class="btn btn-primary">Rejoindre</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COACHES SECTION ==================== -->
+    <section class="coaches section" id="coaches">
+        <div class="container">
+            <div class="section-title">
+                <h2>Rencontrez Nos <span>Coachs</span></h2>
+                <p>Des professionnels certifiés dédiés à votre transformation</p>
+            </div>
+            <div class="coaches-grid">
+                <div class="coach-card">
+                    <div class="coach-image">
+                        <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="250" fill="url(#grad1)"/>
+                            <circle cx="100" cy="80" r="35" fill="#ffd700"/>
+                            <path d="M 70 130 Q 70 115 100 115 Q 130 115 130 130 L 130 160 L 70 160 Z" fill="#ffffff" opacity="0.9"/>
+                            <rect x="60" y="160" width="80" height="90" fill="#1a1f2e" opacity="0.3"/>
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:rgb(0,122,255);stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:rgb(255,107,53);stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="coach-info">
+                        <div class="coach-name">Raed</div>
+                        <div class="coach-role">Coach Professionnel Certifié</div>
+                        <div class="coach-bio">Spécialiste en force et musculation avec plus de 8 années d'expérience. Raed guide chaque membre vers ses objectifs avec passion et professionnalisme.</div>
+                        <div class="coach-badge">Certifié Professionnel</div>
+                    </div>
+                </div>
+                <div class="coach-card">
+                    <div class="coach-image">
+                        <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="250" fill="url(#grad2)"/>
+                            <circle cx="100" cy="80" r="35" fill="#f0e68c"/>
+                            <path d="M 70 130 Q 70 115 100 115 Q 130 115 130 130 L 130 160 L 70 160 Z" fill="#ffffff" opacity="0.9"/>
+                            <rect x="60" y="160" width="80" height="90" fill="#1a1f2e" opacity="0.3"/>
+                            <defs>
+                                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:rgb(240,230,140);stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:rgb(0,122,255);stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="coach-info">
+                        <div class="coach-name">Yassine</div>
+                        <div class="coach-role">Coach Professionnel Certifié</div>
+                        <div class="coach-bio">Expert en cardio et programmes de transformation. Yassine crée des entraînements adaptés à chaque personne pour maximiser vos résultats.</div>
+                        <div class="coach-badge">Certifié Professionnel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à Transformer Votre Corps?</h2>
+            <p>Réservez votre séance d'essai gratuite dès aujourd'hui et découvrez comment Swedish Gym peut vous aider à atteindre vos objectifs. Nos coachs certifiés vous accueilleront pour une expérience inoubliable.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-light">Réserver une Séance Gratuite</a>
+                <a href="#pricing" class="btn btn-secondary" style="border-color: white; color: white;">Voir Nos Tarifs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nous <span>Contacter</span></h2>
+                <p>Rejoignez la communauté Swedish Gym dès aujourd'hui</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info" style="grid-column: 1 / -1; max-width: 100%;">
+                    <h3>Informations de Contact</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 2rem;">
+                        <div class="contact-item">
+                            <div class="contact-label">📍 Localisation</div>
+                            <div class="contact-value">
+                                Lac 3, Tunis<br>
+                                <a href="https://maps.app.goo.gl/mgCeFDmv8Q3Wbipk6" target="_blank">Voir sur Google Maps →</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-label">💬 WhatsApp</div>
+                            <div class="contact-value">
+                                <a href="https://wa.me/21652771454" target="_blank">+216 52 771 454</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-label">📱 Instagram</div>
+                            <div class="contact-value">
+                                <a href="https://www.instagram.com/swedish_gym/?hl=en" target="_blank">@swedish_gym</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-label">🕐 Horaires</div>
+                            <div class="contact-value">
+                                Lun-Ven: 6:00 AM - 11:00 PM<br>
+                                Sam-Dim: 8:00 AM - 9:00 PM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <p>&copy; 2024 Swedish Gym. Tous droits réservés. | Transformez Votre Vie par le Fitness</p>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/swedish_gym/?hl=en" class="footer-social" target="_blank">📷</a>
+            <a href="https://wa.me/21652771454" class="footer-social" target="_blank">💬</a>
+            <a href="https://maps.app.goo.gl/mgCeFDmv8Q3Wbipk6" class="footer-social" target="_blank">📍</a>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Update active link
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Free trial buttons - show modal or redirect to WhatsApp
+        document.querySelectorAll('#joinBtn, #joinBtn2').forEach(btn => {
+            btn.addEventListener('click', () => {
+                showTrialModal();
+            });
+        });
+
+        // Trial modal
+        function showTrialModal() {
+            const modal = document.createElement('div');
+            modal.id = 'trialModal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+                animation: fadeIn 0.3s ease;
+            `;
+
+            modal.innerHTML = `
+                <div style="
+                    background: linear-gradient(135deg, #1a1f2e, rgba(0, 122, 255, 0.1));
+                    border: 2px solid rgba(0, 122, 255, 0.3);
+                    border-radius: 16px;
+                    padding: 3rem;
+                    max-width: 500px;
+                    width: 90%;
+                    text-align: center;
+                    color: white;
+                    animation: slideUp 0.4s ease;
+                    position: relative;
+                ">
+                    <button onclick="document.getElementById('trialModal').remove()" style="
+                        position: absolute;
+                        top: 20px;
+                        right: 20px;
+                        background: transparent;
+                        border: none;
+                        color: #b0b0b0;
+                        font-size: 1.8rem;
+                        cursor: pointer;
+                        width: 30px;
+                        height: 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">×</button>
+
+                    <h2 style="
+                        font-family: 'Montserrat', sans-serif;
+                        font-size: 2rem;
+                        margin-bottom: 1rem;
+                        background: linear-gradient(135deg, #007AFF, #F0E68C);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                    ">Essai Gratuit</h2>
+
+                    <p style="
+                        color: #b0b0b0;
+                        margin-bottom: 2rem;
+                        font-size: 1rem;
+                        line-height: 1.6;
+                    ">Prêt à commencer votre transformation? Contactez-nous dès maintenant!</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <a href="https://wa.me/21652771454?text=Bonjour%20Swedish%20Gym%2C%20je%20souhaite%20réserver%20une%20séance%20d%27essai%20gratuite" 
+                           target="_blank"
+                           style="
+                            background: linear-gradient(135deg, #007AFF, #FF6B35);
+                            color: white;
+                            padding: 1.1rem 2.5rem;
+                            border-radius: 8px;
+                            text-decoration: none;
+                            font-weight: 700;
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 0.95rem;
+                            text-transform: uppercase;
+                            letter-spacing: 0.8px;
+                            transition: all 0.3s ease;
+                            border: none;
+                            cursor: pointer;
+                            display: inline-block;
+                        ">
+                            💬 Contactez-nous sur WhatsApp
+                        </a>
+
+                        <a href="https://maps.app.goo.gl/mgCeFDmv8Q3Wbipk6" 
+                           target="_blank"
+                           style="
+                            background: rgba(240, 230, 140, 0.15);
+                            border: 2px solid #F0E68C;
+                            color: #F0E68C;
+                            padding: 1.1rem 2.5rem;
+                            border-radius: 8px;
+                            text-decoration: none;
+                            font-weight: 700;
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 0.95rem;
+                            text-transform: uppercase;
+                            letter-spacing: 0.8px;
+                            transition: all 0.3s ease;
+                            cursor: pointer;
+                            display: inline-block;
+                        ">
+                            📍 Visitez notre salle
+                        </a>
+                    </div>
+
+                    <p style="
+                        color: #808080;
+                        margin-top: 1.5rem;
+                        font-size: 0.85rem;
+                    ">Adresse: Lac 3, Tunis</p>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Lazy load animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideUp 0.6s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.facility-card, .class-card, .coach-card, .pricing-card, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
