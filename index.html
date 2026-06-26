@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -603,6 +602,11 @@
             box-shadow: 0 12px 35px rgba(0, 122, 255, 0.25);
         }
 
+        .class-card:hover .class-card-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .class-emoji {
             font-size: 3.5rem;
             margin-bottom: 1rem;
@@ -616,6 +620,33 @@
             color: var(--primary);
             position: relative;
             z-index: 1;
+        }
+
+        .class-card-hint {
+            margin-top: 0.9rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            opacity: 0.7;
+            transform: translateY(2px);
+            transition: all 0.3s ease;
+        }
+
+        .class-card-hint svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 2.5;
         }
 
         .gallery {
@@ -1267,34 +1298,66 @@
                 <div class="class-card" data-course="hiit">
                     <span class="class-emoji">⚡</span>
                     <h3>HIIT</h3>
+                    <div class="class-card-hint">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        Cliquez pour en savoir plus
+                    </div>
                 </div>
                 <div class="class-card" data-course="fitpump">
                     <span class="class-emoji">💥</span>
                     <h3>Fit Pump</h3>
+                    <div class="class-card-hint">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        Cliquez pour en savoir plus
+                    </div>
                 </div>
                 <div class="class-card" data-course="pilates">
                     <span class="class-emoji">🧘</span>
                     <h3>Pilates</h3>
+                    <div class="class-card-hint">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        Cliquez pour en savoir plus
+                    </div>
                 </div>
                 <div class="class-card" data-course="cardiocircuit">
                     <span class="class-emoji">🏃</span>
                     <h3>Cardio Circuit</h3>
+                    <div class="class-card-hint">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        Cliquez pour en savoir plus
+                    </div>
                 </div>
                 <div class="class-card" data-course="crossfit">
                     <span class="class-emoji">🏋️</span>
                     <h3>CrossFit</h3>
+                    <div class="class-card-hint">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        Cliquez pour en savoir plus
+                    </div>
                 </div>
                 <div class="class-card" data-course="boxe">
                     <span class="class-emoji">🥊</span>
                     <h3>Boxe</h3>
+                    <div class="class-card-hint">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        Cliquez pour en savoir plus
+                    </div>
                 </div>
                 <div class="class-card" data-course="dance">
                     <span class="class-emoji">💃</span>
                     <h3>Dance</h3>
+                    <div class="class-card-hint">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        Cliquez pour en savoir plus
+                    </div>
                 </div>
                 <div class="class-card" data-course="taebo">
                     <span class="class-emoji">🎯</span>
                     <h3>Tae Bo</h3>
+                    <div class="class-card-hint">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        Cliquez pour en savoir plus
+                    </div>
                 </div>
             </div>
         </div>
@@ -1349,7 +1412,6 @@
                         <li>Support des coachs</li>
                         <li>Douches & vestiaires</li>
                     </ul>
-                    <button class="btn btn-primary">Rejoindre</button>
                 </div>
                 <div class="pricing-card featured">
                     <div class="pricing-badge">MEILLEUR PRIX</div>
@@ -1363,7 +1425,6 @@
                         <li>Suivi personnalisé</li>
                         <li>Douches & vestiaires</li>
                     </ul>
-                    <button class="btn btn-primary">Rejoindre</button>
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-duration">1 An</div>
@@ -1377,7 +1438,6 @@
                         <li>Priorité d'accès</li>
                         <li>Douches & vestiaires</li>
                     </ul>
-                    <button class="btn btn-primary">Rejoindre</button>
                 </div>
             </div>
         </div>
