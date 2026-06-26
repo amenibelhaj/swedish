@@ -34,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* ==================== SCROLLBAR ==================== */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -52,7 +51,6 @@
             background: var(--secondary);
         }
 
-        /* ==================== NAVBAR ==================== */
         nav {
             position: fixed;
             top: 0;
@@ -85,7 +83,7 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-.logo-text {
+        .logo-text {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -147,22 +145,6 @@
             box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
         }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            margin: 5px 0;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        /* ==================== HERO SECTION ==================== */
         .hero {
             position: relative;
             height: 100vh;
@@ -321,7 +303,6 @@
             }
         }
 
-        /* ==================== SCROLL INDICATOR ==================== */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -348,7 +329,6 @@
             }
         }
 
-        /* ==================== CONTAINER & SECTIONS ==================== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -385,7 +365,6 @@
             margin-top: 1rem;
         }
 
-        /* ==================== ABOUT SECTION ==================== */
         .about {
             background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.03));
             border-top: 1px solid rgba(0, 122, 255, 0.1);
@@ -394,9 +373,9 @@
 
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: stretch;
         }
 
         .about-text h3 {
@@ -478,7 +457,40 @@
             flex-shrink: 0;
         }
 
-        /* ==================== FACILITIES SECTION ==================== */
+        .about-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 550px;
+            box-shadow: 0 20px 60px rgba(0, 122, 255, 0.25);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(255, 107, 53, 0.1));
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .facilities {
             background: var(--dark-bg);
         }
@@ -546,7 +558,6 @@
             line-height: 1.6;
         }
 
-        /* ==================== CLASSES SECTION ==================== */
         .classes {
             background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.02));
             border-top: 1px solid rgba(0, 122, 255, 0.1);
@@ -567,6 +578,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .class-card::before {
@@ -605,7 +617,56 @@
             z-index: 1;
         }
 
-        /* ==================== PRICING SECTION ==================== */
+        .gallery {
+            background: var(--dark-bg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .video-card {
+            background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.05));
+            border: 2px solid rgba(0, 122, 255, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.15);
+        }
+
+        .video-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 122, 255, 0.3);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            background: #1a1a1a;
+            overflow: hidden;
+            border-radius: 14px;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: #000;
+        }
+
+        .video-card:hover .video-wrapper video {
+            filter: brightness(1.1);
+        }
+
         .pricing {
             background: var(--dark-bg);
         }
@@ -712,7 +773,6 @@
             width: 100%;
         }
 
-        /* ==================== COACHES SECTION ==================== */
         .coaches {
             background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.03));
             border-top: 1px solid rgba(0, 122, 255, 0.1);
@@ -735,15 +795,21 @@
 
         .coach-image {
             position: relative;
-            height: 350px;
+            height: 400px;
             overflow: hidden;
             background: linear-gradient(135deg, var(--primary), var(--accent));
         }
 
-        .coach-image svg {
+        .coach-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
+            transition: transform 0.3s ease;
+        }
+
+        .coach-card:hover .coach-image img {
+            transform: scale(1.08);
         }
 
         .coach-image::after {
@@ -797,7 +863,6 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* ==================== CTA SECTION ==================== */
         .cta-section {
             background: linear-gradient(135deg, var(--primary), var(--accent));
             padding: 5rem 2rem;
@@ -857,7 +922,6 @@
             box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
         }
 
-        /* ==================== CONTACT SECTION ==================== */
         .contact {
             background: var(--dark-bg);
         }
@@ -905,7 +969,6 @@
             color: var(--primary);
         }
 
-        /* ==================== FOOTER ==================== */
         footer {
             background: linear-gradient(135deg, var(--dark-card), rgba(0, 122, 255, 0.05));
             border-top: 1px solid rgba(0, 122, 255, 0.1);
@@ -947,14 +1010,13 @@
             transform: translateY(-4px);
         }
 
-        /* ==================== RESPONSIVE ==================== */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
             }
 
-            .hamburger {
-                display: flex;
+            nav.scrolled {
+                display: none;
             }
 
             .nav-cta {
@@ -993,6 +1055,18 @@
             .cta-buttons .btn {
                 width: 100%;
             }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1028,7 +1102,6 @@
 </head>
 <body>
 
-    <!-- ==================== NAVBAR ==================== -->
     <nav id="navbar">
         <a href="#" class="logo">
             <img src="vd/gym-logo.jpeg" alt="Swedish Gym Logo" style="height: 45px; width: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);">
@@ -1038,30 +1111,22 @@
             <li><a href="#about" class="nav-link active">À Propos</a></li>
             <li><a href="#facilities" class="nav-link">Équipements</a></li>
             <li><a href="#classes" class="nav-link">Cours</a></li>
+            <li><a href="#gallery" class="nav-link">Galerie</a></li>
             <li><a href="#pricing" class="nav-link">Tarifs</a></li>
             <li><a href="#coaches" class="nav-link">Coachs</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <button class="nav-cta" id="joinBtn">Essai Gratuit</button>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
     </nav>
 
-    <!-- ==================== HERO SECTION ==================== -->
     <section class="hero" id="hero">
         <video autoplay muted loop playsinline>
             <source src="vd/gym-video-5.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la balise vidéo.
         </video>
 
         <div class="hero-content">
             <div class="hero-label">Transformez Votre Corps, Transformez Votre Vie</div>
-            <h1>
-                Devenez <span>Invincible</span>
-            </h1>
+            <h1>Devenez <span>Invincible</span></h1>
             <p>Rejoignez Swedish Gym et découvrez votre vrai potentiel avec nos programmes d'entraînement élite et nos coachs professionnels certifiés.</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary" id="joinBtn2">Essai Gratuit</button>
@@ -1076,7 +1141,6 @@
         </div>
     </section>
 
-    <!-- ==================== ABOUT SECTION ==================== -->
     <section class="about section" id="about">
         <div class="container">
             <div class="about-content">
@@ -1119,14 +1183,13 @@
                         </div>
                     </div>
                 </div>
-                <div style="background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 12px; padding: 3rem; display: flex; align-items: center; justify-content: center; height: 100%; min-height: 400px; overflow: hidden;">
-                    <img src="vd/swedish-pic.jpg" alt="Swedish Gym" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                <div class="about-image">
+                    <img src="vd/swedish-pic.jpg" alt="Swedish Gym">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== FACILITIES SECTION ==================== -->
     <section class="facilities section" id="facilities">
         <div class="container">
             <div class="section-title">
@@ -1168,7 +1231,6 @@
         </div>
     </section>
 
-    <!-- ==================== CLASSES SECTION ==================== -->
     <section class="classes section" id="classes">
         <div class="container">
             <div class="section-title">
@@ -1176,35 +1238,35 @@
                 <p>Une variété de classes pour tous les goûts et tous les objectifs</p>
             </div>
             <div class="classes-grid">
-                <div class="class-card">
+                <div class="class-card" data-course="hiit">
                     <span class="class-emoji">⚡</span>
                     <h3>HIIT</h3>
                 </div>
-                <div class="class-card">
+                <div class="class-card" data-course="fitpump">
                     <span class="class-emoji">💥</span>
                     <h3>Fit Pump</h3>
                 </div>
-                <div class="class-card">
+                <div class="class-card" data-course="pilates">
                     <span class="class-emoji">🧘</span>
                     <h3>Pilates</h3>
                 </div>
-                <div class="class-card">
+                <div class="class-card" data-course="cardiocircuit">
                     <span class="class-emoji">🏃</span>
                     <h3>Cardio Circuit</h3>
                 </div>
-                <div class="class-card">
+                <div class="class-card" data-course="crossfit">
                     <span class="class-emoji">🏋️</span>
                     <h3>CrossFit</h3>
                 </div>
-                <div class="class-card">
+                <div class="class-card" data-course="boxe">
                     <span class="class-emoji">🥊</span>
                     <h3>Boxe</h3>
                 </div>
-                <div class="class-card">
+                <div class="class-card" data-course="dance">
                     <span class="class-emoji">💃</span>
                     <h3>Dance</h3>
                 </div>
-                <div class="class-card">
+                <div class="class-card" data-course="taebo">
                     <span class="class-emoji">🎯</span>
                     <h3>Tae Bo</h3>
                 </div>
@@ -1212,7 +1274,38 @@
         </div>
     </section>
 
-    <!-- ==================== PRICING SECTION ==================== -->
+    <section class="gallery section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre <span>Galerie</span></h2>
+                <p>Découvrez l'atmosphère et l'énergie de Swedish Gym</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video muted autoplay loop playsinline preload="auto">
+                            <source src="vd/training1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video muted autoplay loop playsinline preload="auto">
+                            <source src="vd/training2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video muted autoplay loop playsinline preload="auto">
+                            <source src="vd/training3.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="pricing section" id="pricing">
         <div class="container">
             <div class="section-title">
@@ -1264,7 +1357,6 @@
         </div>
     </section>
 
-    <!-- ==================== COACHES SECTION ==================== -->
     <section class="coaches section" id="coaches">
         <div class="container">
             <div class="section-title">
@@ -1274,18 +1366,7 @@
             <div class="coaches-grid">
                 <div class="coach-card">
                     <div class="coach-image">
-                        <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="200" height="250" fill="url(#grad1)"/>
-                            <circle cx="100" cy="80" r="35" fill="#ffd700"/>
-                            <path d="M 70 130 Q 70 115 100 115 Q 130 115 130 130 L 130 160 L 70 160 Z" fill="#ffffff" opacity="0.9"/>
-                            <rect x="60" y="160" width="80" height="90" fill="#1a1f2e" opacity="0.3"/>
-                            <defs>
-                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:rgb(0,122,255);stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:rgb(255,107,53);stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                        <img src="vd/raed.jpeg" alt="Coach Raed">
                     </div>
                     <div class="coach-info">
                         <div class="coach-name">Raed</div>
@@ -1296,18 +1377,7 @@
                 </div>
                 <div class="coach-card">
                     <div class="coach-image">
-                        <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="200" height="250" fill="url(#grad2)"/>
-                            <circle cx="100" cy="80" r="35" fill="#f0e68c"/>
-                            <path d="M 70 130 Q 70 115 100 115 Q 130 115 130 130 L 130 160 L 70 160 Z" fill="#ffffff" opacity="0.9"/>
-                            <rect x="60" y="160" width="80" height="90" fill="#1a1f2e" opacity="0.3"/>
-                            <defs>
-                                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:rgb(240,230,140);stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:rgb(0,122,255);stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                        <img src="vd/yassine.jpeg" alt="Coach Yassine">
                     </div>
                     <div class="coach-info">
                         <div class="coach-name">Yassine</div>
@@ -1320,7 +1390,6 @@
         </div>
     </section>
 
-    <!-- ==================== CTA SECTION ==================== -->
     <section class="cta-section">
         <div class="cta-content">
             <h2>Prêt à Transformer Votre Corps?</h2>
@@ -1332,7 +1401,6 @@
         </div>
     </section>
 
-    <!-- ==================== CONTACT SECTION ==================== -->
     <section class="contact section" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1379,7 +1447,6 @@
         </div>
     </section>
 
-    <!-- ==================== FOOTER ==================== -->
     <footer>
         <p>&copy; 2024 Swedish Gym. Tous droits réservés. | Transformez Votre Vie par le Fitness</p>
         <div class="footer-socials">
@@ -1389,9 +1456,7 @@
         </div>
     </footer>
 
-    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1401,7 +1466,6 @@
             }
         });
 
-        // Smooth scroll for nav links
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1410,21 +1474,18 @@
                 if (targetSection) {
                     targetSection.scrollIntoView({ behavior: 'smooth' });
                     
-                    // Update active link
                     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                     link.classList.add('active');
                 }
             });
         });
 
-        // Free trial buttons - show modal or redirect to WhatsApp
         document.querySelectorAll('#joinBtn, #joinBtn2').forEach(btn => {
             btn.addEventListener('click', () => {
                 showTrialModal();
             });
         });
 
-        // Trial modal
         function showTrialModal() {
             const modal = document.createElement('div');
             modal.id = 'trialModal';
@@ -1549,13 +1610,190 @@
             });
         }
 
+        const coursesData = {
+            hiit: {
+                name: 'HIIT',
+                emoji: '⚡',
+                description: 'L\'entraînement par intervalles à haute intensité (HIIT) alterne entre des périodes courtes d\'efforts maximums et des périodes de récupération.',
+                benefits: ['Perte de poids rapide', 'Augmentation du métabolisme', 'Amélioration de l\'endurance', 'Peu de matériel requis', 'Résultats rapides'],
+                why: 'Idéal pour brûler les graisses et augmenter votre condition physique.'
+            },
+            fitpump: {
+                name: 'Fit Pump',
+                emoji: '💥',
+                description: 'Une classe d\'entraînement dynamique combinant musique énergique et haltères légers pour renforcer l\'ensemble de votre corps.',
+                benefits: ['Renforcement musculaire', 'Amélioration de la coordination', 'Ambiance motivante', 'Adapté à tous niveaux', 'Tonification générale'],
+                why: 'Créé pour sculpter votre silhouette.'
+            },
+            pilates: {
+                name: 'Pilates',
+                emoji: '🧘',
+                description: 'Le Pilates se concentre sur le contrôle du corps, la flexibilité et la force du centre.',
+                benefits: ['Flexibilité accrue', 'Renforcement du core', 'Meilleure posture', 'Réduction du stress', 'Mobilité améliorée'],
+                why: 'Parfait pour améliorer votre flexibilité.'
+            },
+            cardiocircuit: {
+                name: 'Cardio Circuit',
+                emoji: '🏃',
+                description: 'Un circuit d\'entraînement cardiovasculaire intense pour améliorer votre capacité cardiaque.',
+                benefits: ['Santé cardiaque', 'Augmentation de l\'endurance', 'Brûlage de calories', 'Énergie accrue', 'Résistance améliorée'],
+                why: 'Essentiel pour renforcer votre cœur.'
+            },
+            crossfit: {
+                name: 'CrossFit',
+                emoji: '🏋️',
+                description: 'Une méthode d\'entraînement qui combine l\'haltérophilie, la gymnastique et le cardio.',
+                benefits: ['Force extrême', 'Endurance élévée', 'Composition physique transformée', 'Communauté forte', 'Défi quotidien'],
+                why: 'Pour ceux qui cherchent un défi ultime.'
+            },
+            boxe: {
+                name: 'Boxe',
+                emoji: '🥊',
+                description: 'L\'entraînement de boxe combine des techniques de combat avec du cardio intense.',
+                benefits: ['Défense personnelle', 'Évacuation du stress', 'Renforcement total', 'Confiance en soi', 'Coordination améliorée'],
+                why: 'Idéal pour développer votre confiance.'
+            },
+            dance: {
+                name: 'Dance',
+                emoji: '💃',
+                description: 'Une classe de danse fitness qui transforme votre entraînement en fête!',
+                benefits: ['Cardio amusant', 'Coordination améliorée', 'Confiance accrue', 'Expression créative', 'Brûlage de calories'],
+                why: 'Parce que l\'entraînement ne doit pas être ennuyeux.'
+            },
+            taebo: {
+                name: 'Tae Bo',
+                emoji: '🎯',
+                description: 'Une fusion de taekwondo et de boxe pour un entraînement cardiovasculaire explosif.',
+                benefits: ['Cardio intense', 'Défense personnelle', 'Coordination', 'Brûlage de calories', 'Énergie libérée'],
+                why: 'Pour un entraînement explosif.'
+            }
+        };
 
-        // Update active nav link on scroll
+        document.querySelectorAll('.class-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const courseId = this.getAttribute('data-course');
+                showCourseModal(courseId);
+            });
+        });
+
+        function showCourseModal(courseId) {
+            const course = coursesData[courseId];
+            if (!course) return;
+
+            const modal = document.createElement('div');
+            modal.id = 'courseModal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+                animation: fadeIn 0.3s ease;
+                overflow-y: auto;
+            `;
+
+            const benefitsList = course.benefits.map(benefit => `<li style="color: #b0b0b0; margin-bottom: 0.8rem;">✓ ${benefit}</li>`).join('');
+
+            modal.innerHTML = `
+                <div style="
+                    background: linear-gradient(135deg, #1a1f2e, rgba(0, 122, 255, 0.1));
+                    border: 2px solid rgba(0, 122, 255, 0.3);
+                    border-radius: 16px;
+                    padding: 3rem;
+                    max-width: 600px;
+                    width: 90%;
+                    margin: auto;
+                    color: white;
+                    animation: slideUp 0.4s ease;
+                    position: relative;
+                ">
+                    <button onclick="document.getElementById('courseModal').remove()" style="
+                        position: absolute;
+                        top: 20px;
+                        right: 20px;
+                        background: transparent;
+                        border: none;
+                        color: #b0b0b0;
+                        font-size: 1.8rem;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    ">×</button>
+
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">${course.emoji}</div>
+                        <h2 style="
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 2.2rem;
+                            background: linear-gradient(135deg, #007AFF, #F0E68C);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            background-clip: text;
+                        ">${course.name}</h2>
+                    </div>
+
+                    <p style="
+                        color: #b0b0b0;
+                        margin-bottom: 2rem;
+                        font-size: 1rem;
+                        line-height: 1.7;
+                    ">${course.description}</p>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 1.3rem;
+                            color: #007AFF;
+                            margin-bottom: 1.2rem;
+                        ">Avantages</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            ${benefitsList}
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(0, 122, 255, 0.1); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; border-left: 4px solid #FF6B35;">
+                        <p style="color: #b0b0b0; margin: 0;">${course.why}</p>
+                    </div>
+
+                    <button onclick="
+                        document.getElementById('courseModal').remove();
+                        document.getElementById('joinBtn2').click();
+                    " style="
+                        width: 100%;
+                        background: linear-gradient(135deg, #007AFF, #FF6B35);
+                        color: white;
+                        padding: 1.1rem;
+                        border: none;
+                        border-radius: 8px;
+                        font-weight: 700;
+                        font-family: 'Montserrat', sans-serif;
+                        font-size: 0.95rem;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    ">
+                        Réserver une Séance
+                    </button>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
         window.addEventListener('scroll', () => {
             let current = '';
             document.querySelectorAll('section').forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 if (pageYOffset >= sectionTop - 200) {
                     current = section.getAttribute('id');
                 }
@@ -1569,7 +1807,6 @@
             });
         });
 
-        // Lazy load animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1584,9 +1821,19 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.facility-card, .class-card, .coach-card, .pricing-card, .stat-card').forEach(el => {
+        document.querySelectorAll('.facility-card, .class-card, .coach-card, .pricing-card, .stat-card, .video-card').forEach(el => {
             el.style.opacity = '0';
             observer.observe(el);
+        });
+
+        document.querySelectorAll('.video-wrapper video').forEach(video => {
+            video.addEventListener('loadedmetadata', () => {
+                console.log('Video loaded successfully');
+            });
+            
+            video.addEventListener('error', (e) => {
+                console.error('Video error:', e);
+            });
         });
     </script>
 
